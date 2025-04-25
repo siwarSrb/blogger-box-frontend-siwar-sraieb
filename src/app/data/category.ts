@@ -3,6 +3,11 @@ export interface Category {
   name: string;
 }
 
+export type CategoryCreateInput = Omit<Category, 'id'>;
+export interface CategoryUpdateInput {
+  name: string;
+}
+
 export const CATEGORIES = [
   {
     id: 'cf7df5b7-f42d-424a-bec3-1547f068b4ca',
