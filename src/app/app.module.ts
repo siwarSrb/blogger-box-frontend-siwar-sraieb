@@ -8,6 +8,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostListItemComponent } from './components/post-list-item-component/post-list-item-component.component';
 import { PostService } from './services/post.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PostService } from './services/post.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideHttpClient(),
