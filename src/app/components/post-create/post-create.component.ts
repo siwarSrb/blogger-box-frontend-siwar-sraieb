@@ -7,6 +7,7 @@ import { PostService } from '../../services/post.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-post-create',
@@ -69,11 +70,24 @@ export class PostCreateComponent implements OnInit {
 
     this.postService.createPost(title, content, categoryId).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your post has been created successfully',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate(['/']);
+        });
       },
       error: (error: Error) => {
         console.error('Error creating post', error);
         this.isSubmitting = false;
+        Swal.fire({
+          title: 'Error!',
+          text: 'There was an error creating your post. Please try again.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       }
     });
   }
